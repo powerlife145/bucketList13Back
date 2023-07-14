@@ -1,12 +1,12 @@
 package com.sparta.bucketlistproj.entity;
 
 
+import com.sparta.bucketlistproj.dto.BucketRequestDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-//git hub test
 @Entity
 @Getter
 @Setter
@@ -18,13 +18,18 @@ public class Bucket {
     private Long id;
     @Column(name = "content", nullable = false)
     private String content;
-    @Column(name = "image_url", nullable = false)
-    private String imageurl;
+//    @Column(name = "image_url", nullable = false)
+//    private String imageurl;
     @Column(name = "finish_check", nullable = false)
-    private boolean finishCheck;
+    private Boolean finishCheck;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="author")
-    private User user;
+    public Bucket(BucketRequestDto bucketRequestDto) {
+        this.content = bucketRequestDto.getContent();
+        this.finishCheck=bucketRequestDto.getFinish_check();
+    }
+//
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name="author")
+//    private User user;
 
 }
