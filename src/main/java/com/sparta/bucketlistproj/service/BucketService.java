@@ -20,6 +20,8 @@ public class BucketService {
         this.bucketRepository = bucketRepository;
     }
 
+
+    //버킷 작성 저장
     public BucketResponseDto createBucket(BucketRequestDto bucketRequestDto) {
         Bucket bucket = new Bucket(bucketRequestDto);
         Bucket saveBucket = bucketRepository.save(bucket);
@@ -28,16 +30,19 @@ public class BucketService {
         return bucketResponseDto;
     }
 
+    //전체 조회
     public List<BucketResponseDto> getBucket() {
         return bucketRepository.findAllByOrderById().stream().map(BucketResponseDto::new).toList();
     }
 
+    //선택 조회
     public BucketResponseDto getBucketById(Long id) {
         Bucket bucket = bucketRepository.findById(id).orElseThrow(()->new IllegalArgumentException("버킷 없음"));
         return new BucketResponseDto(bucket);
     }
 
 
+    //버킷 삭제
     public Long deleteBucket(Long id) {
         Bucket bucket = findBucket(id);
         bucketRepository.delete(bucket);
