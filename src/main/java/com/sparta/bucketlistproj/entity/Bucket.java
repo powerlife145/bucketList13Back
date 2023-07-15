@@ -16,10 +16,13 @@ public class Bucket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(name = "content", nullable = false)
     private String content;
+
 //    @Column(name = "image_url", nullable = false)
 //    private String imageurl;
+
     @Column(name = "finish_check", nullable = false)
     private Boolean finishCheck;
 
