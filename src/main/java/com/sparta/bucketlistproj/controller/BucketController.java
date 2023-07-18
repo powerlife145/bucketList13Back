@@ -25,8 +25,9 @@ public class BucketController {
 
 
 
+    //추가 테스트용입니다.
     @GetMapping("/post/test")
-    public List<BucketResponseDto> getBucket11(){
+    public List<BucketResponseDto> getBucketTest(){
         return BucketService.getBucket();
     }
 
