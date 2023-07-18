@@ -30,7 +30,7 @@ public class BucketController {
 //        return BucketService.getBucket();
 //    }
 
-    @GetMapping("/posttest")
+    @GetMapping("/post")
     public List<BucketResponseDto> getBucket(){
         return BucketService.getBucket();
     }
