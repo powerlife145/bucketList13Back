@@ -25,10 +25,10 @@ public class BucketController {
 
 
 
-//    @GetMapping("/posts")
-//    public List<BucketResponseDto> getBucket(){
-//        return BucketService.getBucket();
-//    }
+    @GetMapping("/post/test")
+    public List<BucketResponseDto> getBucket11(){
+        return BucketService.getBucket();
+    }
 
     @GetMapping("/post")
     public List<BucketResponseDto> getBucket(){
