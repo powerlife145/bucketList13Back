@@ -25,13 +25,19 @@ public class BucketService {
     public BucketResponseDto createBucket(BucketRequestDto bucketRequestDto) {
         Bucket bucket = new Bucket(bucketRequestDto);
         Bucket saveBucket = bucketRepository.save(bucket);
-
         BucketResponseDto bucketResponseDto = new BucketResponseDto(saveBucket);
         return bucketResponseDto;
+
+//        if(!saveBucket.getContent().isEmpty()){
+//        }else
+//
+//
     }
 
     //전체 조회
     public List<BucketResponseDto> getBucket() {
+
+
         return bucketRepository.findAllByOrderById().stream().map(BucketResponseDto::new).toList();
     }
 
