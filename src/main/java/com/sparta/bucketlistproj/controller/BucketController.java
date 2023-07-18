@@ -23,10 +23,17 @@ public class BucketController {
         return BucketService.createBucket(BucketRequestDto);
     }
 
+
+
 //    @GetMapping("/posts")
 //    public List<BucketResponseDto> getBucket(){
 //        return BucketService.getBucket();
 //    }
+
+    @GetMapping("/posts/test")
+    public List<BucketResponseDto> getBucket(){
+        return BucketService.getBucket();
+    }
 
     @GetMapping("/post/{id}")
     public BucketResponseDto getBucketById(@PathVariable Long id){
