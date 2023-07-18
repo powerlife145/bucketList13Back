@@ -36,8 +36,6 @@ public class BucketService {
 
     //전체 조회
     public List<BucketResponseDto> getBucket() {
-
-
         return bucketRepository.findAllByOrderById().stream().map(BucketResponseDto::new).toList();
     }
 
