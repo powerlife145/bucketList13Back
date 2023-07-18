@@ -5,8 +5,8 @@ import com.sparta.bucketlistproj.dto.BucketRequestDto;
 import com.sparta.bucketlistproj.dto.BucketResponseDto;
 import com.sparta.bucketlistproj.service.BucketService;
 
-import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,7 +19,7 @@ public class BucketController {
     private final BucketService BucketService;
 
     @PostMapping("/post")
-    public BucketResponseDto createSale(@RequestBody BucketRequestDto BucketRequestDto){
+    public ResponseEntity<?> createSale(@RequestBody BucketRequestDto BucketRequestDto){
         return BucketService.createBucket(BucketRequestDto);
     }
 
@@ -27,17 +27,17 @@ public class BucketController {
 
     //추가 테스트용입니다.
     @GetMapping("/post/test")
-    public List<BucketResponseDto> getBucketTest(){
+    public ResponseEntity<?> getBucketTest(){
         return BucketService.getBucket();
     }
 
     @GetMapping("/post")
-    public List<BucketResponseDto> getBucket(){
-        return BucketService.getBucket();
+    public ResponseEntity<?> getBucket(){
+        return  BucketService.getBucket();
     }
 
     @GetMapping("/post/{id}")
-    public BucketResponseDto getBucketById(@PathVariable Long id){
+    public ResponseEntity<?> getBucketById(@PathVariable Long id){
         return BucketService.getBucketById(id);
     }
 
@@ -48,7 +48,7 @@ public class BucketController {
 //    }
 
     @DeleteMapping("/post/{id}")
-    public Long deleteBucket(@PathVariable Long id){
+    public ResponseEntity<?> deleteBucket(@PathVariable Long id){
         return BucketService.deleteBucket(id);
     }
 
