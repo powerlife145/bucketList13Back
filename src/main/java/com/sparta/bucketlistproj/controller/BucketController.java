@@ -31,7 +31,7 @@ public class BucketController {
         return BucketService.getBucket();
     }
 
-    @GetMapping("/post")
+    @GetMapping("/posts")
     public ResponseEntity<?> getBucket(){
         return  BucketService.getBucket();
     }
