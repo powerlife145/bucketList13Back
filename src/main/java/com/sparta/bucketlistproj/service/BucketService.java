@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
@@ -65,6 +66,24 @@ public class BucketService {
         BucketResponseDto bucketResponseDto = new BucketResponseDto(bucket.get());
         return new ResponseEntity<>(bucketResponseDto, HttpStatus.OK);
     }
+
+    @Transactional
+    public ResponseEntity<?> finishCheck(Long id, BucketRequestDto bucketRequestDto){
+        Optional<Bucket> bucket =bucketRepository.findById(id);
+        if(!bucket.isPresent()){
+            ErrorDto errorDto = new ErrorDto("Not post found with id"+id , HttpStatus.NOT_FOUND.value());
+            return new ResponseEntity<>(errorDto, HttpStatus.NOT_FOUND);
+        }
+        Bucket bucket1 =bucket.get();
+        bucket1.setFinishCheck(bucketRequestDto.getFinish_check());
+        bucketRepository.save(bucket1);
+
+        BucketResponseDto bucketResponseDto = new BucketResponseDto(bucket1);
+        return new ResponseEntity<>(bucketResponseDto,HttpStatus.OK);
+    }
+
+
+
 
 
     //버킷 삭제

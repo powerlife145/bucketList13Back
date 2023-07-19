@@ -10,6 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
+
 @CrossOrigin
 @RestController
 @RequestMapping("/api")
@@ -22,8 +25,6 @@ public class BucketController {
     public ResponseEntity<?> createSale(@RequestBody BucketRequestDto BucketRequestDto){
         return BucketService.createBucket(BucketRequestDto);
     }
-
-
 
     //추가 테스트용입니다.
     @GetMapping("/post/test")
@@ -40,6 +41,10 @@ public class BucketController {
     public ResponseEntity<?> getBucketById(@PathVariable Long id){
         return BucketService.getBucketById(id);
     }
+
+    @PutMapping("/post/{id}")
+    public ResponseEntity<?> putFinsishCheck(@PathVariable  Long id, @RequestBody BucketRequestDto bucketRequestDto) {return BucketService.finishCheck(id, bucketRequestDto);}
+
 
     //수정
 //    @PutMapping("/post/{id}")
