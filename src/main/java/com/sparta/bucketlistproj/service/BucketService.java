@@ -12,7 +12,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -48,7 +50,9 @@ public class BucketService {
             ErrorDto errorDto = new ErrorDto("Bad Request",HttpStatus.BAD_REQUEST.value());
             return new ResponseEntity<>(errorDto, HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(buckets,HttpStatus.OK);
+        Map<String, Object> response = new HashMap<>();
+        response.put("postList", buckets);
+        return new ResponseEntity<>(response,HttpStatus.OK);
     }
 
     //선택 조회
